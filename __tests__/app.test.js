@@ -97,7 +97,6 @@ describe('pokemon routes', () => {
       message: `Pokemon ${pumpkaboo.name} was deleted.`
     });
   });
-
 });
 
 describe('holiday routes', () => {
@@ -105,29 +104,45 @@ describe('holiday routes', () => {
     return setup(pool);
   });
 
-  
-});
+  it('creates a holiday via POST', async () => {
+    const korea = {
+      country: 'South Korea',
+      lang: 'Korean',
+      capital: 'Seoul',
+    };
 
-describe('book routes', () => {
-  beforeEach(() => {
-    return setup(pool);
+    const res = await request(app)
+      .post('/api/v1/holidays')
+      .send(korea);
+    
+    expect(res.body).toEqual({
+      id: '1',
+      ...korea
+    });
   });
-
   
 });
 
-describe('cat routes routes', () => {
-  beforeEach(() => {
-    return setup(pool);
-  });
+// describe('book routes', () => {
+//   beforeEach(() => {
+//     return setup(pool);
+//   });
 
   
-});
+// });
 
-describe('video game routes', () => {
-  beforeEach(() => {
-    return setup(pool);
-  });
+// describe('cat routes routes', () => {
+//   beforeEach(() => {
+//     return setup(pool);
+//   });
 
   
-});
+// });
+
+// describe('video game routes', () => {
+//   beforeEach(() => {
+//     return setup(pool);
+//   });
+
+  
+// });
