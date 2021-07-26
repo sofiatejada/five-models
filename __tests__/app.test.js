@@ -75,7 +75,7 @@ describe('pokemon routes', () => {
       hiddenAb: 'insomnia',
     });
 
-    const res = request(app)
+    const res = await request(app)
       .put(`/api/v1/pokemon/${pumpkaboo.id}`)
       .send({ type2: 'grass' });
     
