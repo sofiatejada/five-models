@@ -144,17 +144,17 @@ describe('holiday routes', () => {
       capital: 'Madrid',
     });
 
-    const korea = {
+    const korea = await Holiday.insert({
       country: 'South Korea',
       lang: 'Korean',
       capital: 'Seoul',
-    };
+    });
 
-    const australia = {
+    const australia = await Holiday.insert({
       country: 'Australia',
       lang: 'English',
       capital: 'Canberra',
-    };
+    });
 
     return request(app)
       .get('/api/v1/holidays')
@@ -206,7 +206,7 @@ describe('book routes', () => {
       genre: 'science fiction',
     };
     const res = await request(app)
-      .post('/api/v1/book')
+      .post('/api/v1/books')
       .send(frankenstein);
 
     expect(res.body).toEqual({
@@ -222,7 +222,7 @@ describe('book routes', () => {
       genre: 'science fiction',
     });
 
-    const res = await request(app).get(`/api/v1/pokemon/${frankenstein.id}`);
+    const res = await request(app).get(`/api/v1/books/${frankenstein.id}`);
 
     expect(res.body).toEqual(frankenstein);
   });
@@ -262,7 +262,7 @@ describe('book routes', () => {
 
     const res = await request(app)
       .put(`/api/v1/books/${frankenstein.id}`)
-      .send({ type2: 'grass' });
+      .send({ genre: 'horror' });
     
     expect(res.body).toEqual({ ...frankenstein, genre: 'horror' });
   });
