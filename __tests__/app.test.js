@@ -34,7 +34,32 @@ describe('pokemon routes', () => {
     expect(res.body).toEqual(cleffa);
   });
 
+  it('gets all pokemon with GET', async () => {
+    const cleffa = await Pokemon.insert({ 
+      name: 'Cleffa',
+      type1: 'Fairy',
+      type2: 'N/A',
+      hiddenAb: 'Friend Guard',
+    });
 
+    const pumpkaboo = await Pokemon.insert({ 
+      name: 'pumpkaboo', 
+      type1: 'ghost', 
+      type2: 'grass', 
+      hiddenAb: 'insomnia',
+    });
+
+    const corsola = await Pokemon.insert({
+      name: 'Galarian Corsola',
+      type1: 'Ghost',
+      type2: 'N/A',
+      hiddenAb: 'Cursed Body'
+    });
+
+    const res = await request(app).get('api/v1/pokemon');
+
+    expect(res.body).toEqual([cleffa, pumpkaboo, corsola]);
+  });
 
 
 
