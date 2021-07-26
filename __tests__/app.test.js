@@ -67,6 +67,19 @@ describe('pokemon routes', () => {
     // expect(res.body).toEqual([cleffa, pumpkaboo, corsola]);
   });
 
+  it('updates a pokemon by id with PUT', async () => {
+    const pumpkaboo = await Pokemon.insert({ 
+      name: 'pumpkaboo', 
+      type1: 'ghost', 
+      type2: 'normal', 
+      hiddenAb: 'insomnia',
+    });
 
+    const res = request(app)
+      .put(`/api/v1/pokemon/${pumpkaboo.id}`)
+      .send({ type2: 'grass' });
+    
+    expect(res.body).toEqual({ ...pumpkaboo, type2: 'grass' });
+  });
 
 });
