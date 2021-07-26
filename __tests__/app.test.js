@@ -458,5 +458,4 @@ describe('video game routes', () => {
       message: `Video Game ${sims4.name} has been deleted.`
     });
   });
-  
 });
