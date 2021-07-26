@@ -56,9 +56,15 @@ describe('pokemon routes', () => {
       hiddenAb: 'Cursed Body'
     });
 
-    const res = await request(app).get('api/v1/pokemon');
+    // const res = await request(app).get('api/v1/pokemon');
 
-    expect(res.body).toEqual([cleffa, pumpkaboo, corsola]);
+    return request(app)
+      .get('/api/v1/pokemon')
+      .then((res) => {
+        expect(res.body).toEqual([cleffa, pumpkaboo, corsola]);
+      });
+
+    // expect(res.body).toEqual([cleffa, pumpkaboo, corsola]);
   });
 
 
