@@ -2,7 +2,8 @@ import pool from '../lib/utils/pool.js';
 import setup from '../data/setup.js';
 import request from 'supertest';
 import app from '../lib/app.js';
-import Pokemon from '../lib/models/PokemonModel.js';
+import Pokemon from '../lib/models/HiddenAbility.js';
+
 
 describe('pokemon routes', () => {
   beforeEach(() => {
@@ -97,4 +98,36 @@ describe('pokemon routes', () => {
     });
   });
 
+});
+
+describe('holiday routes', () => {
+  beforeEach(() => {
+    return setup(pool);
+  });
+
+  
+});
+
+describe('book routes', () => {
+  beforeEach(() => {
+    return setup(pool);
+  });
+
+  
+});
+
+describe('cat routes routes', () => {
+  beforeEach(() => {
+    return setup(pool);
+  });
+
+  
+});
+
+describe('video game routes', () => {
+  beforeEach(() => {
+    return setup(pool);
+  });
+
+  
 });
